@@ -1,3 +1,33 @@
-<p>
-  product-create works!
-</p>
+<div class="container">
+
+  <h2 class="text-center"> add Goods</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="id" Goods Id>Goods Id:</label>
+      <input type="text" formControlName="id" placeholder="Goods ID" name="id" class="form-control" id="id">
+    </div>
+
+    <div class="form-group">
+      <label for="title" Goods Id>Goods title:</label>
+      <input type="text" formControlName="title" placeholder="Goods Name" name="title" class="form-control" id="title">
+    </div>
+
+    <div class="form-group">
+      <label for="detail" Goods Id>Goods detail:</label>
+      <input type="text" formControlName="detail" placeholder="Goods detail" name="detail" class="form-control" id="detail">
+    </div>
+
+    <div class="form-group">
+      <label for="price" Goods Id>Goods price:</label>
+      <input type="text" formControlName="price" placeholder="Goods price" name="price" class="form-control" id="price">
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-danger" [disabled]="myForm.invalid">Add</button>
+
+    </div>
+  </form>
+
+
+
+</div>
