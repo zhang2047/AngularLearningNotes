@@ -1,0 +1,40 @@
+<form class="login-form" [formGroup]=myForm (ngSubmit)=onSubmit()>
+  <div class="form-group">
+    <label for="userName">User Name</label>
+    <input type="userName" class="form-control" id="userName" placeholder="userName" formControlName="userName">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+      formControlName="email" [ngClass]="{
+      'is-invalid':myForm.controls.email.invalid&&myForm.controls.email.dirty,
+      'is-valid':myForm.controls.email.valid&&myForm.controls.email.dirty
+      }">
+    <div class="invalid-feedback">The Email is invalid!</div>
+
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
+      [ngClass]="{
+        'is-invalid':myForm.controls.password.invalid&&myForm.controls.password.dirty,
+        'is-valid':myForm.controls.password.valid&&myForm.controls.password.dirty
+      }">
+    <div class="invalid-feedback">The password is invalid!</div>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary login-form-button">Submit</button>
+</form>
+
+
+
+<pre> {{myForm.value | json}}</pre>
+<pre>Dirty[all] ? {{myForm.dirty}}</pre>
+<pre>Dirty[password] ? {{myForm.controls.password.dirty}}</pre>
+<pre>Touched[all] ? {{myForm.touched}}</pre>
+<pre>Touched[password] ? {{myForm.controls.password.touched}}</pre>
+<pre>Vaild[all] ? {{myForm.valid}}</pre>
+<pre>Vaild[password] ? {{myForm.controls.password.valid}}</pre>
