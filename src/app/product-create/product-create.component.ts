@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { ProductService } from "../Service/product.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-product-create',
@@ -10,7 +12,7 @@ export class ProductCreateComponent implements OnInit {
 
   myForm: FormGroup;
 
-  constructor() {
+  constructor(private service: ProductService, private router: Router) {
     this.myForm = new FormGroup({
       id: new FormControl("", [Validators.required])
       , title: new FormControl("", [Validators.required])
@@ -22,4 +24,13 @@ export class ProductCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  onSubmit() {
+    if (this.myForm.valid) {
+      this.service.createProduct(this.myForm.value)
+        .subscribe(data => {
+          this.router.navigate(['product-list']);
+        });
+    }
+  }
 }
